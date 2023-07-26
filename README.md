@@ -7,3 +7,6 @@ Este servidor ha sido diseñado por [wrykun.com](https://www.wrykun.com), una pl
 **Nota:** Ten en cuenta que este archivo README es un trabajo en progreso, y se irá añadiendo más información a medida que el proyecto evolucione. ¡Tus comentarios y contribuciones siempre son bienvenidos!
 
 **Descargo de responsabilidad:** Por el momento, el servidor podría no ser adecuado para entornos de producción y se recomienda utilizarlo únicamente con fines educativos o de desarrollo.
+
+## Descarga del Binario para Linux x64
+Puedes descargar la última versión del binario para Linux x64 del WryKun Web Server (WWS) desde el siguiente enlace: [Descargar WWS para Linux x64](https://wrykun.com/donwload/wws-0-0-1-linux-x64.tar.gz)

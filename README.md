@@ -1,2 +1,2 @@
-# WryKun-Web-Server
+# WryKun Web Server (WWS)
 Servidor Simple para fines educativos

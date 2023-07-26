@@ -1,3 +1,9 @@
 # WryKun Web Server (WWS)
-# wws
-(es un servidor simple que quiero pasar a un servidor de producción poco a poco, por ahora se puede utilizar para fines educativos o para tener una base para crear sus servidores simples!)
+
+**WryKun Web Server (WWS)** es un servidor básico diseñado para ser mejorado y desarrollado aún más, con el objetivo final de hacerlo adecuado para su uso en producción. En la actualidad, sirve con propósitos educativos y proporciona una base sencilla para crear un servidor web. El servidor es completamente gratuito y de código abierto, lo que permite a los desarrolladores contribuir y mejorar sus capacidades. Se encuentra en constante actualización y optimización para evolucionar hacia un servidor web robusto y adecuado para producción.
+
+Este servidor ha sido diseñado por [wrykun.com](https://www.wrykun.com), una plataforma dedicada al desarrollo web y tecnologías relacionadas.
+
+**Nota:** Ten en cuenta que este archivo README es un trabajo en progreso, y se irá añadiendo más información a medida que el proyecto evolucione. ¡Tus comentarios y contribuciones siempre son bienvenidos!
+
+**Descargo de responsabilidad:** Por el momento, el servidor podría no ser adecuado para entornos de producción y se recomienda utilizarlo únicamente con fines educativos o de desarrollo.

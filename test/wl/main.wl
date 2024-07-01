@@ -1,0 +1,1 @@
+wl::write "WryKun Language";

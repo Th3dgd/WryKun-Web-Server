@@ -1,0 +1,3 @@
+[[
+    wwl::import "lib/autoload.wwl";
+]]

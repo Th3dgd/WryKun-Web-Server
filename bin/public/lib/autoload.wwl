@@ -1,0 +1,5 @@
+[[
+    wwl::import "lib/src/struct.wwl";
+    wwl::import "lib/src/write.wwl";
+    wwl::import "lib/src/conditions.wwl";
+]]

@@ -2,7 +2,7 @@
 #include "server.h"
 
 int main() {
-    ServerWWS ServerWWS(80);
+    ServerWWS ServerWWS(1);
     if (ServerWWS.startingSocket()) {
         ServerWWS.acceptConnection();
     } else {

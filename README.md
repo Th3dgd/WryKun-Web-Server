@@ -49,7 +49,7 @@ Las contribuciones son bienvenidas. Puedes ayudar de las siguientes maneras:
 
 ## Licencia
 
-Este proyecto está licenciado bajo la Licencia Personalizada. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
+Este proyecto está licenciado bajo la Licencia de Uso Comercial Restringido. Consulta el archivo [LICENSE](LICENSE) para obtener más detalles.
 
 ## Descargo de Responsabilidad
 

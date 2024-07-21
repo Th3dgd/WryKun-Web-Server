@@ -1,3 +1,5 @@
+// Copyright (c) 2024 WryKun
+
 #ifndef WWL_H
 #define WWL_H
 #include <map>

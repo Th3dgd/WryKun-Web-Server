@@ -1,6 +1,6 @@
 // Copyright (c) 2024 WryKun
 
-#ifndef WWL_H
+#ifndef WWL_H // WryKun Web Language
 #define WWL_H
 #include <map>
 #include <regex>

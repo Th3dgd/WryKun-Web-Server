@@ -1,3 +1,5 @@
+// Copyright (c) 2024 WryKun
+
 #ifndef SERVER_H
 #define SERVER_H
 #include "wtp.h"

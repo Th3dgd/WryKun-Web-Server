@@ -1,3 +1,5 @@
+// Copyright (c) 2024 WryKun
+
 #ifndef HTTP_H
 #define HTTP_H
 #include <string>

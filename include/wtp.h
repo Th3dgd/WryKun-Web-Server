@@ -1,3 +1,5 @@
+// Copyright (c) 2024 WryKun
+
 #ifndef WTP_H // WryKun Threadpool Process
 #define WTP_H // WryKun Threadpool Process
 

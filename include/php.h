@@ -1,3 +1,5 @@
+// Copyright (c) 2024 WryKun
+
 #ifndef PHP_H
 #define PHP_H
 #include <string>

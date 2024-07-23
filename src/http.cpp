@@ -1,3 +1,4 @@
+// Copyright (c) 2024 WryKun
 #include "http.h"
 #include <iostream>
 #include <string>

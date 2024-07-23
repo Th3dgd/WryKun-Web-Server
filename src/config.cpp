@@ -1,3 +1,5 @@
+// Copyright (c) 2024 WryKun
+
 #include "config.h"
 #include <iostream>
 #include <regex>

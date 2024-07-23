@@ -1,3 +1,4 @@
+// Copyright (c) 2024 WryKun
 #include "wwl.h"
 #include "config.h"
 #include <iostream>

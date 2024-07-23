@@ -1,3 +1,4 @@
+// Copyright (c) 2024 WryKun
 #include <iostream>
 #include "server.h"
 

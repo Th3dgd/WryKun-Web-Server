@@ -1,3 +1,4 @@
+// Copyright (c) 2024 WryKun
 #include "wtp.h"
 
 wtp::wtp(size_t numThreads) : stop(false) {

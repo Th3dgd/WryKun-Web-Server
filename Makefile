@@ -1,12 +1,14 @@
 CXX = g++
-SRC = src/*.cpp
+CXXFLAGS = -std=c++20 -Wall -Wextra
+SRC = $(wildcard src/*.cpp)
 INCLUDE = -Iinclude
 OUT = bin/wws
 
 all: $(OUT)
 
 $(OUT): $(SRC)
-	$(CXX) $(SRC) $(INCLUDE) -o $(OUT)
+	@mkdir -p bin
+	$(CXX) $(CXXFLAGS) $(SRC) $(INCLUDE) -o $(OUT)
 
 run: $(OUT)
 	cd bin && sudo ./wws

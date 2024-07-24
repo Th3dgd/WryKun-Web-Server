@@ -1,6 +1,6 @@
 #include "server.h"
 
-ServerWWS::ServerWWS(int sysExec) : sysExec(sysExec), socketServer(socket(AF_INET, SOCK_STREAM, 0)) {
+ServerWWS::ServerWWS(int sysExec) : socketServer(socket(AF_INET, SOCK_STREAM, 0)), sysExec(sysExec) {
     config config;
     this->port = config.port;
 

@@ -13,6 +13,7 @@ WryKun Web Server (WWS) es un servidor básico diseñado para ser mejorado y des
 
 - Sistema operativo Linux x64
 - Un compilador compatible con C++ (por ejemplo, GCC)
+- C++ Versión 20
 
 ### Descarga e Instalación
 

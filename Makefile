@@ -1,4 +1,3 @@
-// Copyright (c) 2024 WryKun
 CXX = g++
 CXXFLAGS = -std=c++20 -Wall -Wextra
 SRC = $(wildcard src/*.cpp)

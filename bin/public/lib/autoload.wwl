@@ -1,6 +1,18 @@
 [[
-    -/ Copyright (c) 2024 WryKun
+    // Copyright (c) 2024 WryKun
+
+    // Import
+    wwl::write "[Example] How to use import <br>";
+    wwl::write "In backend code <br>";
     wwl::import "lib/src/struct.wwl";
+
+    // write
     wwl::import "lib/src/write.wwl";
+
+    wwl::write "[Example] How to use conditions <br>";
     wwl::import "lib/src/conditions.wwl";
+
+    // While
+    wwl::write "[Example] How to use loop while <br>";
+    wwl::import "lib/src/while.wwl";
 ]]

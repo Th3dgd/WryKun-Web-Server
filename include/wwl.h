@@ -21,6 +21,12 @@ public:
 private:
     bool statusOpen;
     bool WWLSaveInt(std::string line);
+    //bool redefineVar(std::string line);
+    bool WWLSumInt(std::string line);
+    bool WWLReturnCondition (std::string condition);
+    bool WWLConditions (std::string line);
+    bool WWLWhile (std::string line);
+    bool loopWhile (std::string content);
     std::string logicToProcess(std::string RouteToProcess);
     std::string languageProcess(const std::string& line);
 };

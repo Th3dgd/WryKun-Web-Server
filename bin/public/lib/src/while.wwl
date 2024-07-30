@@ -1,0 +1,12 @@
+[[
+    // Simple example of how to use the while loop in WryKun Web Language
+
+    int y = 0;
+
+    while (y < 10) {
+        wwl::write "y is ";
+        wwl::write y;
+        wwl::write "<br>";
+        y += 1;
+    }
+]]

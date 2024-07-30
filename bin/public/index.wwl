@@ -1,4 +1,4 @@
--/ Copyright (c) 2024 WryKun
+// Copyright (c) 2024 WryKun
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,18 +47,18 @@
     }
 </style>
 <body>
-    -/<wwl::write value="testing" wwl::style="styles.wss">
+    //<wwl::write value="testing" wwl::style="styles.wss">
     <div class="content-image">
         <img src="https://wrykun.com/wrykun-image-uniforme.svg" width="70%" alt="WryKun Image">
     </div>
     <div class="main-content">
         [[
-            -/ esta linea se encuentra comentada
+            // esta linea se encuentra comentada
             wwl::write "<center>WryKun Web Server</center>";
         ]]
         <br>
         <center>
-            <a href="systems.wwl" class="link-css">Systems</a>
+            <a href="examples.wwl" class="link-css">Examples</a>
         </center>
     </div>
 </body>

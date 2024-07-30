@@ -1,7 +1,14 @@
 [[
-    -/ Copyright (c) 2024 WryKun
+    // Copyright (c) 2024 WryKun
 
     int x = 4;
     
-    wwl::write x;
+    // TODO FIX BUG IN != AND ==
+
+    if (x == 4) {
+        wwl::write "x is equal to 4<br>";
+    }
+    if (x != 4) {
+        wwl::write "x not is equal to 4<br>";
+    }
 ]]

@@ -7,6 +7,11 @@
 #include <string>
 #include <map>
 
+bool ConditionStatus = false;
+bool WhileStatus = false;
+std::string content = "";
+std::string conditionWhileLine = "";
+
 wwl::wwl() : statusOpen(false) {}
 
 wwl::~wwl() {}
@@ -17,8 +22,64 @@ const std::regex writeInterpretePattern(R"(wwl::write\s+(\"([^\"]*)\"|([^\s;]+))
 const std::regex debugInterpretePattern(R"(wwl::debug\s+\"([^\"]*)\")");
 const std::regex importInterpretePattern(R"(wwl::import\s+\"([^\"]*)\")");
 const std::regex intInterpretePattern(R"(int\s+(\w+)\s*=\s*(\d+);)");
+const std::regex intSumInterpretePattern(R"((\w+)\s*\+=\s*(\d+);)");
+//const std::regex redefineVarInterpretePattern(R"((\w+)\s*=\s*(\w+);)");
 const std::regex ifInterpretePattern(R"(if\s*\(([^)]+)\)\s*\{)");
-const std::regex WWLCommentPattern(R"(^\s*-/.*)");
+const std::regex whileInterpretePattern(R"(while\s*\(([^)]+)\)\s*\{)");
+const std::regex WWLCommentPattern(R"(^\s*//.*)");
+const std::regex operatorPattern(R"((\w+)\s*(==|!=|<=|>=|<|>)\s*(\d+))");
+const std::regex closeConditionsPattern("^(\\s*\\}\\s*)$");
+
+bool wwl::WWLReturnCondition (std::string condition) {
+    std::smatch operatorMatches;
+    if (std::regex_search(condition, operatorMatches, operatorPattern)){
+        std::string operand1 = operatorMatches[1].str();
+        std::string operatorString = operatorMatches[2].str();
+        std::string operand2 = operatorMatches[3].str();
+
+        int cmp_val_1 = (this->valuesInt.find(operand1) != this->valuesInt.end()) ? this->valuesInt[operand1] : std::stoi(operand1);
+        int cmp_val_2 = (this->valuesInt.find(operand2) != this->valuesInt.end()) ? this->valuesInt[operand2] : std::stoi(operand2);
+
+        if (operatorString == ">") {
+            return (cmp_val_1 > cmp_val_2);
+        } else if (operatorString == "<") {
+            return (cmp_val_1 < cmp_val_2);
+        } else if (operatorString == "==") {
+            return (cmp_val_1 == cmp_val_2);
+        } else if (operatorString == ">=") {
+            return (cmp_val_1 >= cmp_val_2);
+        } else if (operatorString == "<=") {
+            return (cmp_val_1 <= cmp_val_2);
+        } else if (operatorString == "!=") {
+            return (cmp_val_1 != cmp_val_2);
+        } else {
+            return false;
+        }
+    }
+    
+    return false;
+}
+
+bool wwl::WWLConditions (std::string line) {
+    std::smatch matches;
+    if (std::regex_search(line, matches, ifInterpretePattern)) {
+        std::string condition = matches[1].str();
+        ConditionStatus = this->WWLReturnCondition(condition);
+    }
+    return false;
+}
+
+bool wwl::WWLWhile (std::string line) {
+    std::smatch matches;
+
+    if (std::regex_search(line, matches, whileInterpretePattern)){
+        std::string condition = matches[1].str();
+        conditionWhileLine = condition;
+        WhileStatus = this->WWLReturnCondition(condition);
+    }
+
+    return true;
+}
 
 
 bool WWLisComment(const std::string& line) {
@@ -51,30 +112,6 @@ bool WWLDebug(const std::string& line) {
     return false;
 }
 
-/* TODO Add conditions with variables */
-
-/*bool WWLConditions (std::string line) {
-    std::smatch matches;
-
-    if (std::regex_search(line, matches, ifInterpretePattern)) {
-        std::string condition = matches[1].str();
-
-        std::regex operatorPattern(R"((==|!=|<=|>=|<|>))");
-        std::smatch operatorMatches;
-
-        if (std::regex_search(condition, operatorMatches, operatorPattern)){
-            //std::cout << "testing operator: " << operatorMatches[1].str() << std::endl;
-
-            bool toReturnIf = false;
-            
-            
-
-            return true;
-        }
-
-    }
-    return false;
-}*/
 
 std::string wwl::WWLImport(const std::string& line) {
     std::smatch matches;
@@ -138,6 +175,47 @@ bool wwl::WWLSaveInt(std::string line) {
     return true;
 }
 
+bool wwl::WWLSumInt(std::string line){ 
+    std::smatch matches;
+
+    if (std::regex_search(line, matches, intSumInterpretePattern)) {
+        std::string name = matches[1].str();
+        int valueToSum = std::stoi(matches[2].str());
+        this->valuesInt[name] = this->valuesInt[name] + valueToSum;
+    }
+    return true;
+}
+
+/* TODO function of redefine variables with wwl
+bool wwl::redefineVar(std::string line) {
+    std::smatch matches;
+
+    if (std::regex_search(line, matches, redefineVarInterpretePattern)) {
+        std::string name = matches[1].str();
+        std::string value = matches[2].str();
+
+        std::cout <<"[WWL] - name line " << name << std::endl;
+        std::cout <<"[WWL] - value line " << value << std::endl;
+
+        //this->valuesInt[name];
+    }
+
+    return true;
+}*/
+
+bool wwl::loopWhile(std::string content) {
+    while(this->WWLReturnCondition(conditionWhileLine)){
+        std::istringstream iss(content);
+        std::string line;
+        while (std::getline(iss, line)) {
+            this->processLanguageValueGlobal += this->languageProcess(line);
+        }
+    }
+
+    return true;
+}
+
+
 std::string wwl::languageProcess(const std::string& line) {
     std::string processToReturn = "";
 
@@ -151,6 +229,26 @@ std::string wwl::languageProcess(const std::string& line) {
         this->statusOpen = false;
     }
 
+    if (WhileStatus) {
+        if (WWLSearch(line, closeConditionsPattern) && statusOpen && !isCommnet){
+            WhileStatus = false;
+            loopWhile(content);
+            ConditionStatus = false;
+            content = "";
+            conditionWhileLine = "";
+            return processToReturn;
+        }
+        content += line + "\n";
+        return processToReturn;
+    }
+
+    if(ConditionStatus){
+        if (WWLSearch(line, closeConditionsPattern) && statusOpen && !isCommnet) {
+            ConditionStatus = false;
+        }
+        return processToReturn;
+    }
+
     if (WWLSearch(line, writeInterpretePattern) && statusOpen && !isCommnet) {
         processToReturn += this->WWLWrite(line) + "\n";
     }else if (WWLSearch(line, debugInterpretePattern) && statusOpen && !isCommnet){
@@ -162,7 +260,11 @@ std::string wwl::languageProcess(const std::string& line) {
     }else if (WWLSearch(line, intInterpretePattern) && statusOpen && !isCommnet) {
         WWLSaveInt(line);
     }else if (WWLSearch(line, ifInterpretePattern) && statusOpen && !isCommnet){
-        /*WWLConditions(line);*/
+        WWLConditions(line);
+    }else if (WWLSearch(line, intSumInterpretePattern) && statusOpen && !isCommnet) {
+        WWLSumInt(line);
+    }else if (WWLSearch(line, whileInterpretePattern) && statusOpen && !isCommnet){
+        WWLWhile(line);
     }else if (!statusOpen) {
         if (!WWLSearch(line, closeInterpretePattern) && !isCommnet) {
             processToReturn += line + "\n";

@@ -1,32 +1,8 @@
--/ Copyright (c) 2024 WryKun
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Systems</title>
-    <style>
-        *{
-            color: white;
-        }
-        body{
-            background: black;
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-</head>
-<body>
+// Copyright (c) 2024 WryKun
 
-<script>
-    setInterval(() => {
-        $.ajax({
-            "url": "index.wwl",
-            "method": "GET",
-            "success": (response) => {
-                console.log(response);
-            }
-        });
-    }, 1);
-</script>
-</body>
-</html>
+
+// ###############################
+// #                             #
+// #  Structure HTML5 to import  #
+// #                             #
+// ###############################

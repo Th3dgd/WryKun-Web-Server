@@ -1,6 +1,7 @@
 [[
     // Copyright (c) 2024 WryKun
 
+
     // Import
     wwl::write "[Example] How to use import <br>";
     wwl::write "In backend code <br>";

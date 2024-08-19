@@ -1,5 +1,6 @@
 // Copyright (c) 2024 WryKun
 
+
 #include "server.h"
 
 ServerWWS::ServerWWS(int sysExec) : socketServer(socket(AF_INET, SOCK_STREAM, 0)), sysExec(sysExec) {
